@@ -1,2 +1,7 @@
-plugins:
-  - jekyll-optional-front-matter
+defaults:
+- scope:
+    path: ""
+    type: "pages"
+  values:
+    layout: "go-meta"
+    permalink: :path/
