@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<head>
+    {% assign root_path_suffix = page.dir | split: '/' | join: '/' -%}
+    {%- assign root_path = site.url | append: site.baseurl | remove_first: 'https://' | remove_first: 'http://' | append: root_path_suffix %}
+    {%- if page.go-import-repo-url -%}
+    <meta name="go-import" content="{{ root_path }} git {{ page.go-import-repo-url }}">
+    <meta http-equiv="refresh" content="0; {{ page.page.go-import-repo-url }}">
+    {%- else -%}
+    {%- assign repo_name = site.baseurl | append:page.dir | remove_first: '/' | split: '/' | join: '.' -%}
+    <meta name="go-import" content="{{ root_path }} git {{ site.github.owner_url }}/{{ repo_name }}">
+    <meta http-equiv="refresh" content="0; {{ site.github.owner_url }}/{{ repo_name }}">
+    {%- endif %}
+</head>
